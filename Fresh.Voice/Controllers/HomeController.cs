@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Gurock.SmartInspect;
 
 namespace Fresh.Voice.Controllers
 {
@@ -10,6 +11,7 @@ namespace Fresh.Voice.Controllers
     {
         public ActionResult Index()
         {
+            SiAuto.Main.LogMessage("HomeController.Index");
             return View();
         }
 
