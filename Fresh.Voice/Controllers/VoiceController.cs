@@ -15,6 +15,7 @@ namespace Fresh.Voice.Controllers
         // GET: Voice
         public ActionResult Receive(string email)
         {
+            SiAuto.Main.LogMessage("VoiceController.Receive");
             return View("Receive", "_Raw");
         }
 
@@ -44,6 +45,7 @@ namespace Fresh.Voice.Controllers
 
         public ActionResult Transcribed(TranscriptionCallback callback)
         {
+            SiAuto.Main.LogMessage("VoiceController.Transcribed");
             try
             {
                 SiAuto.Main.LogObject("VoiceController.Transcribed - Callback", callback);
@@ -108,6 +110,7 @@ namespace Fresh.Voice.Controllers
 
         public ActionResult Goodbye()
         {
+            SiAuto.Main.LogMessage("VoiceController.Goodbye");
             return View("Goodbye", "_Raw");
         }
     }
