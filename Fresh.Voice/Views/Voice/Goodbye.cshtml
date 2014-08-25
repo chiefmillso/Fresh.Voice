@@ -1,0 +1,7 @@
+@{
+    Response.ContentType = "text/xml";
+
+    var twiml = new Twilio.TwiML.TwilioResponse();
+    twiml.Say("Thanks for the message.  Goodbye.");
+}
+@Html.Raw(twiml.ToString())

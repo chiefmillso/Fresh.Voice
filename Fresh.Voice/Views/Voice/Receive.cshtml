@@ -1,0 +1,19 @@
+@{
+    Response.ContentType = "text/xml";
+    
+    if (Request["email"]==null) {
+        Response.Write("Must specify an email address");
+        Response.Close();
+    }
+    
+    var twiml = new Twilio.TwiML.TwilioResponse();
+    twiml.Say("Hi you've reached David Miller. I'm away at the moment, so please leave a voicemail after the beep, and remember to speak clearly.");
+    twiml.Record(
+        new { 
+            transcribe = "true", 
+            transcribeCallback = string.Format("/Voice/Transcribed?email={0}", Request["email"]), 
+            action = "/Voice/Goodbye", 
+            maxLength = "30" }
+        );
+}
+@Html.Raw(twiml.ToString())

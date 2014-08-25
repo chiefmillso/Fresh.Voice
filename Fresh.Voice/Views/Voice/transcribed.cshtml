@@ -1,0 +1,17 @@
+@{
+    if (Request["email"]==null) {
+        Response.Write("Must specify email address");
+        Response.Close();
+    }
+     
+    if (Request["RecordingUrl"]==null) {
+        Response.Write("Must specify recording url");
+        Response.Close();
+    }
+    
+    if (Request["TranscriptionStatus"]==null) {
+        Response.Write("Must specify transcription status");
+        Response.Close();
+    }
+     
+}
