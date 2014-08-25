@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Text;
 using System.Web.Mvc;
 using Fresh.Voice.DTO;
+using Gurock.SmartInspect;
 using Mandrill;
 using Twilio.TwiML.Mvc;
 
@@ -42,36 +44,46 @@ namespace Fresh.Voice.Controllers
 
         public ActionResult Transcribed(TranscriptionCallback callback)
         {
-            var appSettings = ConfigurationManager.AppSettings;
-            string key = appSettings["Mandrill.ApiKey"];
-            string to = appSettings["Voice.Email.To"];
-            if (to != Request["Email"])
-                return View("Error");
+            try
+            {
+                SiAuto.Main.LogObject("VoiceController.Transcribed - Callback", callback);
 
-            string from = ConfigurationManager.AppSettings["Voice.Email.From"];
-            var api = new MandrillApi(key);
-            var mail = new EmailMessage
-            {
-                to = new List<EmailAddress> {new EmailAddress {email = to, name = ""}},
-                from_email = from
-            };
+                var appSettings = ConfigurationManager.AppSettings;
+                string key = appSettings["Mandrill.ApiKey"];
+                string to = appSettings["Voice.Email.To"];
+                if (to != Request["Email"])
+                    return View("Error");
 
-            if (callback.TranscriptionStatus != TranscriptionStatuses.Completed)
-            {
-                mail.subject = string.Format("Error transcribing voicemail from {0}", callback.Caller);
-                mail.text = GetMessageFailure(callback);
+                string from = ConfigurationManager.AppSettings["Voice.Email.From"];
+                var api = new MandrillApi(key);
+                var mail = new EmailMessage
+                {
+                    to = new List<EmailAddress> {new EmailAddress {email = to, name = ""}},
+                    from_email = from
+                };
+
+                if (callback.TranscriptionStatus != TranscriptionStatuses.Completed)
+                {
+                    mail.subject = string.Format("Error transcribing voicemail from {0}", callback.Caller);
+                    mail.text = GetMessageFailure(callback);
+                }
+                else
+                {
+                    mail.subject = string.Format("New voicemail from {0}", callback.Caller);
+                    mail.text = GetMessageSuccess(callback);
+                }
+
+                List<EmailResult> result = api.SendMessage(mail);
+                var smsTo = appSettings["Voice.SMS.To"];
+                if (!string.IsNullOrEmpty(smsTo))
+                    SendMessage(callback, smsTo);
+                return View("Transcribed", "_Raw");
             }
-            else
+            catch(Exception ex)
             {
-                mail.subject = string.Format("New voicemail from {0}", callback.Caller);
-                mail.text = GetMessageSuccess(callback);
+                SiAuto.Main.LogException("VoiceController.Transcribed - " + ex.Message, ex);
+                throw;
             }
-                
-            List<EmailResult> result = api.SendMessage(mail);
-            var smsTo = appSettings["Voice.SMS.To"];
-            if (!string.IsNullOrEmpty(smsTo))
-                SendMessage(callback, smsTo);
-            return View("Transcribed", "_Raw");
         }
 
         private void SendMessage(TranscriptionCallback callback, string smsTo)
@@ -79,7 +91,10 @@ namespace Fresh.Voice.Controllers
             var appSettings = ConfigurationManager.AppSettings;
             var body = GetShortMessage(callback);
             var client = new Twilio.TwilioRestClient(appSettings["Twilio.AccountSid"], appSettings["Twilio.AuthToken"]);
-            client.SendSmsMessage(appSettings["Voice.SMS.From"], smsTo, body);
+            var message = client.SendSmsMessage(appSettings["Voice.SMS.From"], smsTo, body);
+            if (message.RestException != null)
+                SiAuto.Main.LogObject(Level.Error, "VoiceController.Transcribed.SendMessage", message.RestException);
+
         }
 
         private string GetShortMessage(TranscriptionCallback callback)

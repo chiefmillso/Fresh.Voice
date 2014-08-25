@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Gurock.SmartInspect, Version=3.3.1.21, Culture=neutral, PublicKeyToken=a78b0a9303ab7a7c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Gurock.SmartInspect.dll</HintPath>
+    </Reference>
     <Reference Include="Mandrill">
       <HintPath>..\packages\Mandrill.1.0.85\lib\net40\Mandrill.dll</HintPath>
     </Reference>
@@ -196,6 +200,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Gurock.SmartInspect.dll" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\FreshVoice.pubxml" />
