@@ -16,21 +16,62 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configura
 		PublishScripts\Configurations\FreshVoice-WAWS-dev.json = PublishScripts\Configurations\FreshVoice-WAWS-dev.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fresh.Voice.App", "Fresh.Voice.App\Fresh.Voice.App.csproj", "{CB2D1E66-273D-444A-A345-E656A932C63F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fresh.Voice.WinPhone", "Fresh.Voice.WinPhone\Fresh.Voice.WinPhone.csproj", "{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{640E0231-613A-488F-944E-FCCF09CBBFF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{640E0231-613A-488F-944E-FCCF09CBBFF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{640E0231-613A-488F-944E-FCCF09CBBFF6}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{640E0231-613A-488F-944E-FCCF09CBBFF6}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{640E0231-613A-488F-944E-FCCF09CBBFF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{640E0231-613A-488F-944E-FCCF09CBBFF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{640E0231-613A-488F-944E-FCCF09CBBFF6}.Release|ARM.ActiveCfg = Release|Any CPU
+		{640E0231-613A-488F-944E-FCCF09CBBFF6}.Release|x86.ActiveCfg = Release|Any CPU
+		{CB2D1E66-273D-444A-A345-E656A932C63F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB2D1E66-273D-444A-A345-E656A932C63F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB2D1E66-273D-444A-A345-E656A932C63F}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{CB2D1E66-273D-444A-A345-E656A932C63F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CB2D1E66-273D-444A-A345-E656A932C63F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB2D1E66-273D-444A-A345-E656A932C63F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB2D1E66-273D-444A-A345-E656A932C63F}.Release|ARM.ActiveCfg = Release|Any CPU
+		{CB2D1E66-273D-444A-A345-E656A932C63F}.Release|x86.ActiveCfg = Release|Any CPU
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Debug|ARM.ActiveCfg = Debug|ARM
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Debug|ARM.Build.0 = Debug|ARM
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Debug|ARM.Deploy.0 = Debug|ARM
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Debug|x86.ActiveCfg = Debug|x86
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Debug|x86.Build.0 = Debug|x86
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Debug|x86.Deploy.0 = Debug|x86
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Release|ARM.ActiveCfg = Release|ARM
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Release|ARM.Build.0 = Release|ARM
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Release|ARM.Deploy.0 = Release|ARM
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Release|x86.ActiveCfg = Release|x86
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Release|x86.Build.0 = Release|x86
+		{ED1318E1-3FA8-45B6-BFB9-49810D7BD6E7}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3976B633-CC29-47B1-B3B1-EBC361027063} = {6B91D495-A873-4513-A158-5DAE6225AC89}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Fresh.Voice\Fresh.Voice.csproj
 	EndGlobalSection
 EndGlobal
